@@ -1,7 +1,8 @@
 plugins {
-    id 'application'
+//    id 'application'
     id 'java'
     id 'jacoco'
+    id 'maven-publish'
 }
 
 group 'uk.ashleybye'
@@ -31,30 +32,48 @@ dependencies {
     testCompile "org.testfx:openjfx-monocle:jdk-11+26"
 }
 
-application {
-    mainClassName = 'uk.ashleybye.tictactoe.Application'
-}
+//application {
+//    mainClassName = 'uk.ashleybye.tictactoe.Application'
+//}
 
-jar {
-    manifest {
-        attributes(
-                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
-                'Main-Class': 'uk.ashleybye.tictactoe.Application'
-        )
+//jar {
+//    manifest {
+//        attributes(
+//                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+//                'Main-Class': 'uk.ashleybye.tictactoe.Application'
+//        )
+//    }
+//    from {
+//        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+//    }
+//    destinationDir = file("$buildDir")
+//}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'uk.ashleybye.tictactoe'
+            artifactId = 'tictactoe-core'
+            version = '1.0'
+
+            from components.java
+        }
     }
-    from {
-        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    repositories {
+        maven {
+            // change to point to your repo, e.g. http://my.org/repo
+            url = "$buildDir/repo"
+        }
     }
-    destinationDir = file("$rootDir/out")
 }
 
 wrapper {
     gradleVersion = '4.10.2'
 }
 
-clean {
-    delete "${rootDir}/out"
-}
+//clean {
+//    delete "${rootDir}/out"
+//}
 
 test {
     useJUnitPlatform {

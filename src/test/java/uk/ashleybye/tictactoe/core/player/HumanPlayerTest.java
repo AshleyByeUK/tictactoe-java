@@ -6,16 +6,16 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import uk.ashleybye.tictactoe.console.game.MockGameConsole;
 import uk.ashleybye.tictactoe.core.ClientInterface;
 import uk.ashleybye.tictactoe.core.Game;
 import uk.ashleybye.tictactoe.core.MockGame;
 
 public class HumanPlayerTest {
 
+  private ClientInterface clientInterface = new MockClientInterface(1, 0L);
+
   @Test
   void testCanGetAMoveWhenThereIsNoDelay() {
-    ClientInterface clientInterface = new MockClientInterface(1, 0L);
     Player player = new HumanPlayer(new MockPlayerOneMark(), "Player", clientInterface);
 
     Game game = new MockGame();
@@ -37,13 +37,13 @@ public class HumanPlayerTest {
 
   @Test
   void testEquality() {
-    Player player = new HumanPlayer(new MockPlayerOneMark(), "Player 1", new MockGameConsole());
-    Player otherPlayer = new HumanPlayer(new MockPlayerTwoMark(), "Player 2", new MockGameConsole());
+    Player player = new HumanPlayer(new MockPlayerOneMark(), "Player 1", clientInterface);
+    Player otherPlayer = new HumanPlayer(new MockPlayerTwoMark(), "Player 2", clientInterface);
 
     assertEquals(player, player);
-    assertEquals(player, new HumanPlayer(new MockPlayerOneMark(), "Player 1", new MockGameConsole()));
+    assertEquals(player, new HumanPlayer(new MockPlayerOneMark(), "Player 1", clientInterface));
     assertEquals(player.hashCode(),
-        (new HumanPlayer(new MockPlayerOneMark(), "Player 1", new MockGameConsole())).hashCode());
+        (new HumanPlayer(new MockPlayerOneMark(), "Player 1", clientInterface)).hashCode());
     assertNotEquals(player, otherPlayer);
     assertNotEquals(player, "not a player");
     assertNotEquals(player, null);
