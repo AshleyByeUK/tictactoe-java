@@ -24,7 +24,7 @@ To use this library in your project, include the Maven repository location in yo
 
 ```
 repositories {
-    maven { url "https://raw.githubusercontent.com/AshleyByeUK/maven-repo/master/" }
+    maven { url "https://raw.githubusercontent.com/AshleyByeUK/tictactoe-java-core/repo/" }
     mavenCentral()
 }
 ```
