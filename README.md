@@ -5,11 +5,8 @@
 
 ## Introduction
 
-A game of TicTacToe that can be played in the console r graphical user interface. Features include Human vs Human,
-Human vs Computer and Computer vs Computer modes. The computer player can be configured for easy and hard difficulties.
-
-![Console Game Play Screenshot](images/console-screenshot.png)
-![Graphical Game Play Screenshot](images/graphical-screenshot.png)
+A Tic Tac Toe game library. Features include Human vs Human, Human vs Computer and Computer vs Computer modes.
+The computer player can be configured for easy and hard difficulties.
 
 ## Requirements
 
@@ -21,53 +18,38 @@ JDK installed. The JDK can be obtained from the following links:
 You can also use your operating system's native or third-party package managers to obtain the JDK. Whilst this game 
 has not been tested with older versions of Java, you may find that versions as old as JDK 8 are sufficient.
 
+## Usage
+
+To use this library in your project, include the Maven repository location in your Gradle build file:
+
+```
+repositories {
+    maven { url "https://raw.githubusercontent.com/AshleyByeUK/maven-repo/master/" }
+    mavenCentral()
+}
+```
+
+Include the required dependency in the `dependencies` section of `build.gradle`:
+
+```
+compile "uk.ashleybye.tictactoe:tictactoe-core:1.0"
+```
+
 ## To Play
 
-There are several ways that you can play TicTacToe. First, you'll need to clone this repository:
-
-`git clone git@github.com:AshleyByeUK/game-java-core.git`
-
-You can then use Gradle to run the game or to build a JAR file. The following sections explain how to do this and
-assume you are in the root directory of the project.
-
-### Run with Gradle
-
-To run with Gradle, execute the following command:
-
-`./gradlew --console plain run console`
-
-You can omit the `--console plain` flag, but you will have to put up with Gradle build information being displayed
-in the user interface. This is also quite slow and game play is jittery.
-
-### Run as a JAR file
-
-To build a JAR file, execute the following command:
-
-`./gradlew jar`
-
-This will build a JAR file in the root directory of the project. You can then run the JAR file as follows:
-
-`java -jar out/game.jar [console]`
-
-Game play using this method is much smoother.
+This repository is intended to provide a library that Tic tac Toe clients can use to play games ot Tic tac Toe. See:
+- [Console Client](https://github.com/AshleyByeUK/tictactoe-java-console)
+- [Graphical Client](https://github.com/AshleyByeUK/tictactoe-java-graphical)
 
 ## Testing
 
-The test suite includes long running tests. These are enabled in the Gradle `testSlow` task.
-
-For example, execute all tests, including long running tests with Gradle:
-
-```
-./gradlew testSlow
-```
-
-Conversely, to execute all tests, excluding long running tests with Gradle:
+Execute all tests with Gradle:
 
 ```
 ./gradlew test
 ```
 
-It can also generate code coverage reports:
+Gradle can also generate code coverage reports:
 
 ```
 ./gradlew test jacocoTestReport
