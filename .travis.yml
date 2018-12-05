@@ -6,6 +6,6 @@ before_script:
 - chmod +x gradlew
 script:
 - ./gradlew check
-- ./gradlew test jacocoTestReport
+- ./gradlew test testSlow jacocoTestReport
 after_success:
 - bash <(curl -s https://codecov.io/bash)
