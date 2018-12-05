@@ -1,5 +1,4 @@
 plugins {
-//    id 'application'
     id 'java'
     id 'jacoco'
     id 'maven-publish'
@@ -32,23 +31,6 @@ dependencies {
     testCompile "org.testfx:openjfx-monocle:jdk-11+26"
 }
 
-//application {
-//    mainClassName = 'uk.ashleybye.tictactoe.Application'
-//}
-
-//jar {
-//    manifest {
-//        attributes(
-//                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
-//                'Main-Class': 'uk.ashleybye.tictactoe.Application'
-//        )
-//    }
-//    from {
-//        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-//    }
-//    destinationDir = file("$buildDir")
-//}
-
 publishing {
     publications {
         maven(MavenPublication) {
@@ -61,7 +43,6 @@ publishing {
     }
     repositories {
         maven {
-            // change to point to your repo, e.g. http://my.org/repo
             url = "$buildDir/repo"
         }
     }
@@ -70,10 +51,6 @@ publishing {
 wrapper {
     gradleVersion = '4.10.2'
 }
-
-//clean {
-//    delete "${rootDir}/out"
-//}
 
 test {
     useJUnitPlatform {
